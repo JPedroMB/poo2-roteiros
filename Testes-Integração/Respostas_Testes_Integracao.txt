@@ -1,0 +1,53 @@
+Exercicios Teoricos - Testes de Integracao
+
+
+1. Testes de integracao sao testes que juntam dois ou mais modulos do sistema e verificam se eles funcionam corretamente quando combinados. O principal objetivo e garantir que a comunicacao entre essas partes aconteca sem erros, validando que os dados trafegam certo e os resultados sao os esperados.
+
+2. O teste unitario testa uma parte isolada do codigo, como um metodo ou classe, usando mocks para simular dependencias. Ja o teste de integracao testa a interacao entre duas ou mais partes reais do sistema, como Service + Repository + Banco de dados, verificando se funcionam juntas.
+
+3. Nao, os testes de integracao podem ser realizados tanto de forma automatizada quanto manual. A forma automatizada traz mais velocidade e precisao, mas a manual tambem e valida, principalmente em cenarios mais complexos que exigem avaliacao humana.
+
+4. Sao importantes porque mesmo que cada modulo funcione perfeitamente sozinho, quando integrados podem surgir problemas de comunicacao, formatos de dados incompativeis ou comportamentos inesperados. Sem esses testes, erros so seriam descobertos em producao.
+
+5. Perda ou corrupcao de dados: pode acontecer quando os dados sao transmitidos entre modulos e algo da errado na comunicacao, como um campo que chega nulo ou com formato errado. Resultados divergentes: acontece quando o resultado obtido e diferente do esperado, por exemplo um calculo que depende de dados vindos de outro modulo e recebe valores incorretos.
+
+6. As etapas sao: primeiro identificar os modulos que serao integrados e como se relacionam; depois definir os cenarios de teste, ou seja, quais interacoes serao avaliadas; em seguida criar os casos de teste com dados de entrada e resultados esperados; executar os testes monitorando o comportamento; validar os resultados comparando com o esperado; e por fim documentar tudo.
+
+7. A integracao vertical avalia a interacao entre camadas diferentes do sistema, por exemplo Controller chamando Service que chama Repository que salva no banco. A integracao horizontal verifica a comunicacao entre modulos que estao no mesmo nivel, como PedidoService chamando PagamentoService.
+
+8. Esse e um teste de integracao vertical, porque esta validando o fluxo entre diferentes camadas do sistema: Controller recebe a requisicao, Service processa a logica, Repository persiste no banco. Sao camadas diferentes sendo testadas em conjunto.
+
+9. No contexto da POO, interfaces sao contratos que definem quais metodos uma classe deve implementar. A integracao de interfaces valida se uma implementacao concreta respeita esse contrato corretamente. Por exemplo, testar se PedidoRepository implementa todos os metodos de IPedidoRepository e funciona como esperado.
+
+10. Testes de integracao sao mais lentos porque envolvem dependencias reais como banco de dados, chamadas HTTP, sistemas externos, enquanto testes unitarios usam mocks que respondem instantaneamente. Alem disso, a configuracao do ambiente de integracao demanda mais tempo.
+
+11. a) Esse e um exemplo de integracao horizontal, pois PedidoService e PagamentoService estao no mesmo nivel de camada (ambos sao Services).
+b) Se o PagamentoService fosse uma API externa de outro sistema, passaria a ser integracao de sistemas, pois envolveria a comunicacao com um sistema externo.
+
+12. Esse cenario representa integracao de sistemas, porque envolve a comunicacao do nosso sistema com um sistema externo (API de pagamento). O teste precisa validar se a requisicao e enviada corretamente e se a resposta e tratada adequadamente.
+
+13. Integracao de regressao e a pratica de reexecutar todos os testes de integracao existentes apos alguma alteracao no codigo. Sua importancia esta em garantir que mudancas recentes nao quebraram funcionalidades que ja estavam funcionando. Se um desenvolvedor altera o PedidoService, os testes de regressao verificam se criar pedido, salvar no banco e integracoes externas continuam ok.
+
+14. Esse teste se enquadra em integracao de interfaces. A justificativa e que ele valida se a implementacao concreta (PedidoRepository) respeita o contrato definido pela interface (IPedidoRepository), verificando se todos os metodos funcionam conforme esperado pelo contrato.
+
+15. Nem todos os testes devem ser de integracao porque eles sao mais lentos, mais complexos de configurar e mais dificeis de manter. Testes unitarios sao mais rapidos e isolam melhor os problemas. O ideal e ter uma piramide de testes: muitos testes unitarios na base, uma quantidade media de testes de integracao no meio, e poucos testes end-to-end no topo.
+
+16. Sem testes de integracao, cada modulo pode funcionar perfeitamente sozinho mas falhar quando combinado com outros. Problemas como dados sendo enviados em formato errado entre camadas, queries SQL que nao funcionam com o banco real, ou APIs externas retornando respostas inesperadas so seriam descobertos em producao, causando bugs criticos.
+
+17. Integracao de servicos testa a comunicacao entre servicos dentro de uma aplicacao (como PedidoService chamando EmailService). Isso tambem e uma forma de integracao de sistemas porque servicos sao partes do sistema. Porem, integracao de sistemas tambem inclui comunicacao com coisas que nao sao servicos, como bancos de dados de outros sistemas, ERPs, arquivos compartilhados, etc.
+
+18. Nesse cenario estao envolvidos: integracao vertical (POST chega no Controller, passa pelo Service, vai pro Repository e salva no banco) e integracao de sistemas (o sistema chama uma API externa de pagamento). Tambem pode ser considerado integracao de servicos se houver um PagamentoService intermediando a chamada.
+
+19. Dependencias mockadas sao objetos falsos que simulam o comportamento de dependencias reais, retornando valores pre-definidos. Dependencias reais sao as implementacoes verdadeiras, como um banco de dados real ou uma API externa. Em testes unitarios usamos mocks para isolar o codigo. Em testes de integracao usamos dependencias reais ou proximas do real para validar a interacao verdadeira entre os componentes.
+
+20. Execucao mais rapida do que testes manuais; maior precisao pois elimina erros humanos; facilidade de repeticao podendo ser executados a qualquer momento; melhor escalabilidade para projetos grandes; reducao de custos a longo prazo.
+
+21. Nao e possivel garantir a qualidade apenas com testes de integracao. Eles sao mais lentos e quando falham e mais dificil identificar exatamente onde esta o problema. Testes unitarios sao necessarios para validar a logica de cada componente isoladamente. O ideal e combinar diferentes tipos de teste para cobrir todos os aspectos do sistema.
+
+22. Porque o teste depende de fatores externos que fogem do controle do desenvolvedor: a API pode estar fora do ar, pode ter mudado seu contrato, pode estar com latencia alta, pode haver problemas de rede, ou o servidor externo pode retornar erros temporarios. O codigo pode estar perfeito mas o teste falha por causa do ambiente externo.
+
+23. Uma arquitetura bem definida com camadas separadas facilita muito os testes de integracao porque permite testar cada integracao de forma isolada. Se o codigo esta todo misturado no Program.cs, fica praticamente impossivel testar a integracao entre partes especificas. Com camadas bem definidas, conseguimos testar Service + Repository sem precisar envolver o Controller, por exemplo.
+
+24. Nao, testes de integracao nao substituem testes unitarios. Cada um tem seu papel. Testes unitarios sao rapidos, isolam problemas facilmente e validam a logica interna. Testes de integracao validam a comunicacao entre partes mas sao mais lentos e complexos. Os dois se complementam.
+
+25. Na minha opiniao, o maior desafio e a configuracao e manutencao do ambiente de testes. Preparar bancos de dados de teste, lidar com APIs externas que podem estar indisponiveis, garantir que os dados de teste estejam consistentes, e manter tudo funcionando conforme o sistema evolui exige bastante esforco e organizacao da equipe.
