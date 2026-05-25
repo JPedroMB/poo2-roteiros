@@ -1,0 +1,25 @@
+2026-05-25 18:09:13.4361 [INFO] - Iniciando a execução do programa principal. 
+2026-05-25 18:09:13.4670 [INFO] - Tentando realizar o parse da string: '123a' 
+2026-05-25 18:09:13.4681 [ERROR] - Erro de processamento: Falha na conversão de string para o tipo int. System.FormatException: The input string '123a' was not in a correct format.
+   at System.Number.ThrowFormatException[TChar](ReadOnlySpan`1 value)
+   at System.Int32.Parse(String s)
+   at MonitoramentoFinanceiroNLog.Program.Main(String[] args) in /Users/joaopedro/roteiros/Roteiro5/Roteiros-POO2/Roteiro6/Roteiro6/Program.cs:line 24
+2026-05-25 18:09:13.4752 [INFO] - Conta [Conta-Alfa] inicializada no sistema. Saldo inicial: R$ 500,00 
+2026-05-25 18:09:13.4752 [INFO] - Conta [Conta-Beta] inicializada no sistema. Saldo inicial: R$ 100,00 
+2026-05-25 18:09:13.4752 [INFO] - [OPERACAO: DEPÓSITO] Iniciando transação na conta Conta-Alfa. Valor solicitado: R$ 200,00 
+2026-05-25 18:09:13.4752 [INFO] - [OPERACAO: DEPÓSITO] Sucesso! Depósito realizado. Saldo atualizado: R$ 700,00 
+2026-05-25 18:09:13.4761 [INFO] - [OPERACAO: SAQUE] Iniciando transação na conta Conta-Alfa. Valor solicitado: R$ 150,00 
+2026-05-25 18:09:13.4761 [INFO] - [OPERACAO: SAQUE] Sucesso! Saque realizado. Saldo atualizado: R$ 550,00 
+2026-05-25 18:09:13.4761 [INFO] - [OPERACAO: TRANSFERÊNCIA] Iniciando envio de R$ 100,00 da conta Conta-Alfa para a conta Conta-Beta 
+2026-05-25 18:09:13.4761 [INFO] - [OPERACAO: SAQUE] Iniciando transação na conta Conta-Alfa. Valor solicitado: R$ 100,00 
+2026-05-25 18:09:13.4761 [INFO] - [OPERACAO: SAQUE] Sucesso! Saque realizado. Saldo atualizado: R$ 450,00 
+2026-05-25 18:09:13.4761 [INFO] - [OPERACAO: DEPÓSITO] Iniciando transação na conta Conta-Beta. Valor solicitado: R$ 100,00 
+2026-05-25 18:09:13.4761 [INFO] - [OPERACAO: DEPÓSITO] Sucesso! Depósito realizado. Saldo atualizado: R$ 200,00 
+2026-05-25 18:09:13.4761 [INFO] - [OPERACAO: TRANSFERÊNCIA] Sucesso! Transferência efetuada com êxito entre as contas. 
+2026-05-25 18:09:13.4761 [INFO] - [OPERACAO: SAQUE] Iniciando transação na conta Conta-Alfa. Valor solicitado: R$ 3000,00 
+2026-05-25 18:09:13.4761 [WARN] - [OPERACAO: SAQUE] Tentativa recusada (Saldo Insuficiente). Saldo disponível: R$ 450,00 | Valor solicitado: R$ 3000,00 
+2026-05-25 18:09:13.4761 [ERROR] - Falha crítica não tratada interceptada no escopo principal. System.FormatException: The input string 'ConversaoInvalidaTotal' was not in a correct format.
+   at System.Number.ThrowFormatException[TChar](ReadOnlySpan`1 value)
+   at System.Int32.Parse(String s)
+   at MonitoramentoFinanceiroNLog.Program.Main(String[] args) in /Users/joaopedro/roteiros/Roteiro5/Roteiros-POO2/Roteiro6/Roteiro6/Program.cs:line 56
+2026-05-25 18:09:13.4761 [INFO] - Finalizando a execução do programa. 
